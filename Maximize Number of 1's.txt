@@ -1,0 +1,25 @@
+Given a binary array arr[] containing only 0s and 1s and an integer k, you are allowed to flip at most k 0s to 1s.
+Find the maximum number of consecutive 1's that can be obtained in the array after performing the operation at most k times.
+Code(.py):
+class Solution:
+    def maxOnes(self, arr, k):
+        # code here
+        maxlen=0
+        l=0
+        r=0
+        zeros=0
+        while r < len(arr):
+            if(arr[r] == 0):
+                zeros+=1
+            while zeros > k:
+                if arr[l] == 0:
+                    zeros-=1
+                l += 1
+
+            length = r - l + 1
+            maxlen = max(maxlen, length)
+            
+            r+=1
+            
+        return maxlen
+                
