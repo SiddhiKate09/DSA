@@ -1,0 +1,42 @@
+Ternary Search- dividing the array into three halves
+mid1 = left + (right - left)//3
+mid2 = right - (right - left)//3
+Q:You are given an array heights[] representing the heights of towers and another array cost[] where each element represents the cost of modifying the height of respective tower.
+The goal is to make all towers of same height by either adding or removing blocks from each tower.
+Modifying the height of tower 'i' by 1 unit (add or remove) costs cost[i].
+Return the minimum cost to equalize the heights of all the towers.
+Code-cpp:
+class Solution {
+  public:
+    long long calculateCost(const vector<int>& heights, const vector<int>& cost, int target) {
+        long long total = 0;
+        for (int i = 0; i < heights.size(); i++) {
+            total += (long long)abs(heights[i] - target) * cost[i];
+        }
+        return total;
+    }
+    int minCost(vector<int>& heights, vector<int>& cost) {
+        int low = *min_element(heights.begin(), heights.end());
+        int high = *max_element(heights.begin(), heights.end());
+        
+        long long minTotalCost = LLONG_MAX;
+        while (high - low > 2) {
+            int m1 = low + (high - low) / 3;
+            int m2 = high - (high - low) / 3;
+    
+            long long cost1 = calculateCost(heights, cost, m1);
+            long long cost2 = calculateCost(heights, cost, m2);
+    
+            if (cost1 < cost2) {
+                high = m2;
+            } else {
+                low = m1;
+            }
+        }
+        for (int i = low; i <= high; i++) {
+            minTotalCost = min(minTotalCost, calculateCost(heights, cost, i));
+        }
+    
+        return minTotalCost;
+    }
+};
