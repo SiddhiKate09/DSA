@@ -1,0 +1,15 @@
+Example: Given an array A[] and a number x, check for a pair in A[]
+with the sum as x, where N is:
+1: 1 <= N <= 103
+2: 1 <= N <= 105
+3: 1 <= N <= 108
+For Case 1: A naive solution that is using two for-loops works as it gives us a complexity
+of O(N2), which even in the worst case will perform 106 operations which are well under 108. 
+Of course, O(N) and O(NlogN) is also acceptable in this case.
+
+For Case 2: We have to think of a better solution than O(N2), as in worst case, it will perform
+1010 operations as N is 105. So complexity acceptable for this case is either O(NlogN) which is 
+approximately 106 (105 * ~10) operations well under 108 or O(N).
+
+For Case 3: Even O(NlogN) gives us TLE as it performs ~109 operations which are over 108. 
+So, the only solution which is acceptable is O(N) which in worst case will perform 10^8 operations. 
