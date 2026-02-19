@@ -1,7 +1,7 @@
 Given an array arr[] of integers and a range [low, high], 
 find all the numbers within the range that are not present in the array. 
 return the missing numbers in sorted order.
-code:
+code:cpp
 class Solution {
   public:
     vector<int> missinRange(vector<int>& arr, int low, int high) {
